@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>タイトル python -m http.server --cgi ;  http://localhost:8000/</title>
+</head>
+<body>
+    <button type="button" style="width:100px;height:50px" onclick="func_search()">検索実行</button>
+
+    <label for="area">下記に検索ワードを入れてください</label>
+    <br>
+    <input type="text" id="text2" size="80" value="" /><br>
+    <button type="button"  onclick="func_news()" >ニュース</button>URLが優先<br>
+    URL<input type="text" id="text6" size="75" value="" /><br>
+    <select name="scrapeaction" id="scrapeaction">
+        <option value="https://news.yahoo.co.jp/flash">速報</option>
+        <option value="https://news.yahoo.co.jp/topics/top-picks">yahooトップ</option>
+        <option value="https://news.yahoo.co.jp/categories/entertainment">yahooエンタメ</option>
+        <option value="https://news.yahoo.co.jp/categories/sports">yahooスポーツ</option>
+        <option value="https://news.yahoo.co.jp/categories/business">yahoo　経済</option>
+        <option value="https://news.yahoo.co.jp/categories/it">yahoo　IT</option>
+    </select><br>
+
+
+
+    <input class="button2"  type="button" value="クリア" onclick="clearTextarea()" >
+
+    <p id="inbox"></p>
+
+    <script src="https://code.jquery.com/jquery-2.2.4.js" ></script>
+
+<script>
+
+    function clearTextarea() {
+	    var textareaForm = document.getElementById("text4");
+        textareaForm.value = '';
+	    var textareaForm = document.getElementById("text5");
+        textareaForm.value = '';
+    }
+
+    function func_memo() {
+        let str2 = document.getElementById("text4").value;
+        if(str2==""){
+            str2 = "";
+        }
+        let str3 = document.getElementById("text5").value;
+        if(str3==""){
+            str3 = "";
+        }
+
+        $.ajax({
+
+            url:'./memo_write.py',
+            type:'POST',
+            data:{sent2:str2,sent3:str3}
+        })
+        .done(function(data){
+            var smp=document.getElementById("inbox");
+            smp.innerHTML = data;
+
+        })
+        .fail(function(){
+            var smp=document.getElementById("inbox");
+            smp.innerHTML = "failed";
+        });
+    }
+
+
+
+
+    function func_all() {
+        let str2 = document.getElementById("text2").value;
+        if(str2==""){
+            str2 = "";
+        }
+
+        $.ajax({
+
+            url:'./db_view_all.py',
+            type:'POST',
+            data:{sent2:str2}
+        })
+        .done(function(data){
+            var smp=document.getElementById("inbox");
+            smp.innerHTML = data;
+
+        })
+        .fail(function(){
+            var smp=document.getElementById("inbox");
+            smp.innerHTML = "failed";
+        });
+    }
+
+    function func_db_search() {
+        let str2 = document.getElementById("text2").value;
+        if(str2==""){
+            str2 = "";
+        }
+
+        $.ajax({
+            url:'var/www/html/cgi-enabled/db_search.cgi',
+            type:'POST',
+            data:{sent2:str2}
+        })
+        .done(function(data){
+            var smp=document.getElementById("inbox");
+            smp.innerHTML = data;
+
+        })
+        .fail(function(){
+            var smp=document.getElementById("inbox");
+            smp.innerHTML = "failed";
+        });
+    }
+
+
+    function func_head() {
+        let str2 = document.getElementById("text2").value;
+        if(str2==""){
+            str2 = "";
+        }
+
+        $.ajax({
+
+            url:'./db_view_head.py',
+            type:'POST',
+            data:{sent2:str2}
+        })
+        .done(function(data){
+            var smp=document.getElementById("inbox");
+            smp.innerHTML = data;
+
+        })
+        .fail(function(){
+            var smp=document.getElementById("inbox");
+            smp.innerHTML = "failed";
+        });
+    }
+
+
+
+    function func_last() {
+        let str2 = document.getElementById("text2").value;
+        if(str2==""){
+            str2 = "";
+        }
+
+        $.ajax({
+
+            url:'./db_view_last.py',
+            type:'POST',
+            data:{sent2:str2}
+        })
+        .done(function(data){
+            var smp=document.getElementById("inbox");
+            smp.innerHTML = data;
+
+        })
+        .fail(function(){
+            var smp=document.getElementById("inbox");
+            smp.innerHTML = "failed";
+        });
+    }
+
+
+
+    function func_one() {
+        let str2 = document.getElementById("text3").value;
+        if(str2==""){
+            str2 = "";
+        }
+
+        $.ajax({
+
+            url:'./db_view_one.py',
+            type:'POST',
+            data:{sent2:str2}
+        })
+        .done(function(data){
+            var smp=document.getElementById("inbox");
+            smp.innerHTML = data;
+
+        })
+        .fail(function(){
+            var smp=document.getElementById("inbox");
+            smp.innerHTML = "failed";
+        });
+    }
+
+
+
+    function  func_search(){
+        let str2 = document.getElementById("text2").value;
+        if(str2==""){
+            str2 = "";
+        }
+
+
+        $.ajax({
+
+            url:'./inet_search.py',
+            type:'POST',
+            data:{sent2:str2}
+        })
+        .done(function(data){
+            var smp=document.getElementById("inbox");
+            smp.innerHTML = data;
+
+        })
+        .fail(function(){
+            var smp=document.getElementById("inbox");
+            smp.innerHTML = "failed";
+        });
+
+
+    }
+
+    function  func_news(){
+        let str2 = document.getElementById("text6").value;
+        if(str2==""){
+            str2 = scrapeaction.value;
+        }
+
+
+        $.ajax({
+
+            url:'./inet_news.py',
+            type:'POST',
+            data:{sent2:str2}
+        })
+        .done(function(data){
+            var smp=document.getElementById("inbox");
+            smp.innerHTML = data;
+
+        })
+        .fail(function(){
+            var smp=document.getElementById("inbox");
+            smp.innerHTML = "failed";
+        });
+
+
+    }
+
+
+
+    function  func_del(){
+        let str2 = document.getElementById("text3").value;
+        if(str2==""){
+            str2 = "";
+        }
+
+
+        $.ajax({
+
+            url:'./db_del.py',
+            type:'POST',
+            data:{sent2:str2}
+        })
+        .done(function(data){
+            var smp=document.getElementById("inbox");
+            smp.innerHTML = data;
+
+        })
+        .fail(function(){
+            var smp=document.getElementById("inbox");
+            smp.innerHTML = "failed";
+        });
+
+
+    }
+
+
+
+</script>
+
+</body>
+</html>
+
