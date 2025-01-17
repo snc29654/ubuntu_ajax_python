@@ -30,11 +30,10 @@ def  data_print(url):
           'oq':'',
           'afs':'',}
 
-    r = requests.get(url)
+    r = requests.get(url, params=params)
 
     data = BeautifulSoup(r.content, 'html.parser')
-    find_data=data.find_all("a")
-    return(find_data)
+    return(data)
 
 
 
@@ -42,7 +41,7 @@ cgitb.enable()
 form=cgi.FieldStorage()
 zip_code=form.getvalue("sent2")
 
-find_data=data_print(zip_code)
+find_data=data_print("http://search.yahoo.co.jp/search")
 
 date = datetime.date.today()
 
@@ -59,15 +58,10 @@ with closing(sqlite3.connect(dbname)) as conn:
     except:
         pass
         
-    scraping_contents=find_data
-    Contents = str(scraping_contents)
-    insert_sql = 'insert into users (date, name, weather, kind, zip_code,Contents) values (?,?,?,?,?,?)'
-    users = [
-    (date, name, weather, kind, zip_code,Contents)
-    ]
-    c.executemany(insert_sql, users)
+    select_sql = 'delete  from users where id ='+ str(zip_code)
+    c.execute(select_sql)
     conn.commit()
 
 print("Content-type: text/html\n")
 
-print(find_data)
+print("1件削除しました")

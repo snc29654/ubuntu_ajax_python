@@ -8,11 +8,11 @@ import sys
 import io
 import requests
 from bs4 import BeautifulSoup
-#import sqlite3
+import sqlite3
 from contextlib import closing
 import datetime
 
-dbname = '../ajax_sqlite3.db'
+dbname = './ajax_sqlite3.db'
 
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
@@ -48,7 +48,6 @@ date = datetime.date.today()
 name=""
 weather=""
 kind=""
-"""
 with closing(sqlite3.connect(dbname)) as conn:
     c = conn.cursor()
     create_table = '''create table users (id INTEGER PRIMARY KEY,date varchar(64), name varchar(64),
@@ -56,7 +55,7 @@ with closing(sqlite3.connect(dbname)) as conn:
     try:
         c.execute(create_table)
     except:
-        print("database already exist")
+        pass
         
     scraping_contents=find_data
     Contents = str(scraping_contents)
@@ -66,7 +65,7 @@ with closing(sqlite3.connect(dbname)) as conn:
     ]
     c.executemany(insert_sql, users)
     conn.commit()
-"""
+
 print("Content-type: text/html\n")
 
 print(find_data)
