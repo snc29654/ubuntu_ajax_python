@@ -5,6 +5,7 @@
     <title>タイトル python -m http.server --cgi ;  http://localhost:8000/</title>
 </head>
 <body>
+    DB名<input type="text" id="text7" size="15" value="database.db" /><br>
     <button type="button" style="width:100px;height:50px" onclick="func_search()">検索実行</button>
 
     <label for="area">下記に検索ワードを入れてください</label>
@@ -64,12 +65,15 @@
         if(str3==""){
             str3 = "";
         }
-
+        let str4 = document.getElementById("text7").value;
+        if(str4==""){
+            str4 = scrapeaction.value;
+        }
         $.ajax({
 
             url:'./memo_write.py',
             type:'POST',
-            data:{sent2:str2,sent3:str3}
+            data:{sent2:str2,sent3:str3,sent4:str4}
         })
         .done(function(data){
             var smp=document.getElementById("inbox");
@@ -90,12 +94,15 @@
         if(str2==""){
             str2 = "";
         }
-
+        let str4 = document.getElementById("text7").value;
+        if(str4==""){
+            str4 = scrapeaction.value;
+        }
         $.ajax({
 
             url:'./db_view_all.py',
             type:'POST',
-            data:{sent2:str2}
+            data:{sent2:str2,sent4:str4}
         })
         .done(function(data){
             var smp=document.getElementById("inbox");
@@ -113,11 +120,14 @@
         if(str2==""){
             str2 = "";
         }
-
+        let str4 = document.getElementById("text7").value;
+        if(str4==""){
+            str4 = scrapeaction.value;
+        }
         $.ajax({
             url:'./db_search.py',
             type:'POST',
-            data:{sent2:str2}
+            data:{sent2:str2,sent4:str4}
         })
         .done(function(data){
             var smp=document.getElementById("inbox");
@@ -136,12 +146,15 @@
         if(str2==""){
             str2 = "";
         }
-
+        let str4 = document.getElementById("text7").value;
+        if(str4==""){
+            str4 = scrapeaction.value;
+        }
         $.ajax({
 
             url:'./db_view_head.py',
             type:'POST',
-            data:{sent2:str2}
+            data:{sent2:str2,sent4:str4}
         })
         .done(function(data){
             var smp=document.getElementById("inbox");
@@ -161,12 +174,15 @@
         if(str2==""){
             str2 = "";
         }
-
+        let str4 = document.getElementById("text7").value;
+        if(str4==""){
+            str4 = scrapeaction.value;
+        }
         $.ajax({
 
             url:'./db_view_last.py',
             type:'POST',
-            data:{sent2:str2}
+            data:{sent2:str2,sent4:str4}
         })
         .done(function(data){
             var smp=document.getElementById("inbox");
@@ -186,12 +202,15 @@
         if(str2==""){
             str2 = "";
         }
-
+        let str4 = document.getElementById("text7").value;
+        if(str4==""){
+            str4 = scrapeaction.value;
+        }
         $.ajax({
 
             url:'./db_view_one.py',
             type:'POST',
-            data:{sent2:str2}
+            data:{sent2:str2,sent4:str4}
         })
         .done(function(data){
             var smp=document.getElementById("inbox");
@@ -212,12 +231,15 @@
             str2 = "";
         }
 
-
+        let str4 = document.getElementById("text7").value;
+        if(str4==""){
+            str4 = scrapeaction.value;
+        }
         $.ajax({
 
             url:'./inet_search.py',
             type:'POST',
-            data:{sent2:str2}
+            data:{sent2:str2,sent4:str4}
         })
         .done(function(data){
             var smp=document.getElementById("inbox");
@@ -238,12 +260,17 @@
             str2 = scrapeaction.value;
         }
 
+        let str4 = document.getElementById("text7").value;
+        if(str4==""){
+            str4 = scrapeaction.value;
+        }
+
 
         $.ajax({
 
             url:'./inet_news.py',
             type:'POST',
-            data:{sent2:str2}
+            data:{sent2:str2,sent4:str4}
         })
         .done(function(data){
             var smp=document.getElementById("inbox");
@@ -265,13 +292,16 @@
         if(str2==""){
             str2 = "";
         }
-
+        let str4 = document.getElementById("text7").value;
+        if(str4==""){
+            str4 = scrapeaction.value;
+        }
 
         $.ajax({
 
             url:'./db_del.py',
             type:'POST',
-            data:{sent2:str2}
+            data:{sent2:str2,sent4:str4}
         })
         .done(function(data){
             var smp=document.getElementById("inbox");

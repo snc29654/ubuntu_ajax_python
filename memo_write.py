@@ -12,8 +12,9 @@ import sqlite3
 from contextlib import closing
 import datetime
 
-dbname = './ajax_sqlite3.db'
-
+cgitb.enable()
+form=cgi.FieldStorage()
+dbname='./'+ form.getvalue("sent4")
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
 zip_code=[]
@@ -37,8 +38,6 @@ def  data_print(url):
 
 
 
-cgitb.enable()
-form=cgi.FieldStorage()
 zip_code=form.getvalue("sent2")
 memo_title=form.getvalue("sent3")
 find_data=zip_code
