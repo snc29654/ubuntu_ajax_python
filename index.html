@@ -35,8 +35,11 @@
 
     レコード番号<input type="text" id="text3" size="10" value="" /><br>
 
+    <button type="button"  onclick="func_ai()" >AIチャット </button>
     <button type="button"  onclick="func_memo()" >メモの記録(DB) </button><br>
-    メモ題名<input type="text" id="text5" size="20" value="" /><br>
+    メモ題名/AIチャットの質問<br>
+    <input type="text" id="text5" size="66" value="" /><br>
+    メモ内容<br>
     <textarea id="text4" name="Contents" ROWS=10 COLS=80></textarea><br>
 
 
@@ -87,6 +90,35 @@
     }
 
 
+    function func_ai() {
+        let str2 = document.getElementById("text4").value;
+        if(str2==""){
+            str2 = "";
+        }
+        let str3 = document.getElementById("text5").value;
+        if(str3==""){
+            str3 = "";
+        }
+        let str4 = document.getElementById("text7").value;
+        if(str4==""){
+            str4 = scrapeaction.value;
+        }
+        $.ajax({
+
+            url:'./ai_chat.py',
+            type:'POST',
+            data:{sent2:str2,sent3:str3,sent4:str4}
+        })
+        .done(function(data){
+            var smp=document.getElementById("inbox");
+            smp.innerHTML = data;
+
+        })
+        .fail(function(){
+            var smp=document.getElementById("inbox");
+            smp.innerHTML = "failed";
+        });
+    }
 
 
     function func_all() {

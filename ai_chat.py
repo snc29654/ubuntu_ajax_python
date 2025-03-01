@@ -12,64 +12,12 @@ import sqlite3
 from contextlib import closing
 import datetime
 
-import re
-import sys
-import bs4
-import requests
-from urllib.parse import urljoin
-
-
-
-
-
 cgitb.enable()
 form=cgi.FieldStorage()
 dbname='./'+ form.getvalue("sent4")
-
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
 zip_code=[]
-def  get_link(url):
-    res = requests.get(url)
-    res.raise_for_status()
-
-    soup = bs4.BeautifulSoup(res.text, "lxml")
-    links = soup.select("a")
-
-    keys = set()
-    results = []
-    for link in links:
-        link_url = link.get("href")
-        if not link_url:
-            continue
-
-        if not link_url.startswith("http"):
-            link_url = urljoin(url, link_url)
-
-        link_text = link.text
-        if not link_text:
-            link_text = ""
-        link_text = link_text.strip()
-        link_text = re.sub(r"\n", " ", link_text)
-
-        key = link_url + link_text
-        if key in keys:
-            continue
-        keys.add(key)
-
-        results.append({"url": link_url, "text": link_text})
-
-    return results
-
-
-def  copy_link(url):
-    results = get_link(url)
-
-    text = ""
-    for result in results:
-        text +=  "<a href= \"" + result["url"] +  "\"" +" target=\"_blank\"" + "</a>"+result["text"] +"\t" +"<br>" +"\n"   
-    return(text)
-
 
 def  data_print(url):
     global zip_code
@@ -83,17 +31,31 @@ def  data_print(url):
           'oq':'',
           'afs':'',}
 
-    r = requests.get(url)
+    r = requests.get(url, params=params)
 
     data = BeautifulSoup(r.content, 'html.parser')
-    find_data=data.find_all("a")
-    return(find_data)
+    return(data)
 
 
 
 zip_code=form.getvalue("sent2")
+memo_title=form.getvalue("sent3")
 
-find_data=copy_link(zip_code)
+from openai import OpenAI
+import key_list
+
+client = OpenAI(api_key=key_list.API_KEY)
+
+completion = client.chat.completions.create(
+    messages=[{
+        "role": "user",
+        "content": memo_title,
+    }],
+    model="gpt-4o-mini",
+)
+
+find_data = completion.choices[0].message.content
+
 
 date = datetime.date.today()
 
@@ -114,7 +76,7 @@ with closing(sqlite3.connect(dbname)) as conn:
     Contents = str(scraping_contents)
     insert_sql = 'insert into users (date, name, weather, kind, zip_code,Contents) values (?,?,?,?,?,?)'
     users = [
-    (date, name, weather, kind, zip_code,Contents)
+    (date, name, weather, kind, memo_title,Contents)
     ]
     c.executemany(insert_sql, users)
     conn.commit()
