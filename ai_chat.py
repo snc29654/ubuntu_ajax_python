@@ -55,7 +55,7 @@ completion = client.chat.completions.create(
 )
 
 find_data = completion.choices[0].message.content
-
+find_data=find_data.replace("。","。<br>")
 
 date = datetime.date.today()
 
