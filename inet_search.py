@@ -44,7 +44,7 @@ find_data=data_print("http://search.yahoo.co.jp/search")
 
 date = datetime.date.today()
 
-name=""
+name="検索"
 weather=""
 kind=""
 with closing(sqlite3.connect(dbname)) as conn:

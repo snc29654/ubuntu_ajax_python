@@ -44,7 +44,7 @@ find_data=zip_code
 
 date = datetime.date.today()
 
-name=""
+name="メモ"
 weather=""
 kind=""
 

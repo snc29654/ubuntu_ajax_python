@@ -59,7 +59,7 @@ find_data=find_data.replace("。","。<br>")
 
 date = datetime.date.today()
 
-name=""
+name="AIチャット"
 weather=""
 kind=""
 
