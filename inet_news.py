@@ -15,6 +15,7 @@ import datetime
 cgitb.enable()
 form=cgi.FieldStorage()
 dbname='./'+ form.getvalue("sent4")
+find_all_param=form.getvalue("sent8")
 
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
@@ -35,7 +36,7 @@ def  data_print(url):
     r = requests.get(url)
 
     data = BeautifulSoup(r.content, 'html.parser')
-    find_data=data.find_all("a")
+    find_data=data.find_all(find_all_param)
     return(find_data)
 
 

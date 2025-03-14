@@ -22,7 +22,8 @@
         <option value="メモ">メモ</option>
     </select><br>
     <button type="button"  onclick="func_list()" >URLリスト</button>
-    <button type="button"  onclick="func_news()" >ニュース</button>URLが優先<br>
+    <button type="button"  onclick="func_news()" >ニュース</button>URLが優先/  
+    find_allのパラメータ<input type="text" id="text8" size="10" value="a" /><br>
     URL<input type="text" id="text6" size="75" value="" /><br>
     <select name="scrapeaction" id="scrapeaction">
         <option value="https://news.yahoo.co.jp/ranking/access/news">ランキング</option>
@@ -328,12 +329,16 @@
             str4 = scrapeaction.value;
         }
 
+        let str8 = document.getElementById("text8").value;
+        if(str4==""){
+            str8 = "a";
+        }
 
         $.ajax({
 
             url:'./inet_news.py',
             type:'POST',
-            data:{sent2:str2,sent4:str4}
+            data:{sent2:str2,sent4:str4,sent8:str8}
         })
         .done(function(data){
             var smp=document.getElementById("inbox");
