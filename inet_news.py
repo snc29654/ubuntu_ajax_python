@@ -73,4 +73,4 @@ with closing(sqlite3.connect(dbname)) as conn:
 
 print("Content-type: text/html\n")
 
-print(find_data)
+print(Contents)
