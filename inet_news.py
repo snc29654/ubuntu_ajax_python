@@ -44,7 +44,6 @@ def  data_print(url):
 zip_code=form.getvalue("sent2")
 
 find_data=data_print(zip_code)
-
 date = datetime.date.today()
 
 name=""
@@ -64,6 +63,7 @@ with closing(sqlite3.connect(dbname)) as conn:
     Contents = str(scraping_contents)
     Contents = Contents.replace ("\n","")
     Contents = Contents.replace ("\t","")
+    Contents = Contents.replace ("。","。<br>")
     insert_sql = 'insert into users (date, name, weather, kind, zip_code,Contents) values (?,?,?,?,?,?)'
     users = [
     (date, name, weather, kind, zip_code,Contents)
