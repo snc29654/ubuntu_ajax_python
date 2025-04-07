@@ -73,5 +73,5 @@ with closing(sqlite3.connect(dbname)) as conn:
     conn.commit()
 
 print("Content-type: text/html\n")
-
+Contents=Contents.replace("<a","<a target=\"_blank\"")
 print(Contents)
