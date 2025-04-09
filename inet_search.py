@@ -58,6 +58,7 @@ with closing(sqlite3.connect(dbname)) as conn:
         
     scraping_contents=find_data
     Contents = str(scraping_contents)
+    Contents=Contents.replace("<a","<a target=\"_blank\"")
     insert_sql = 'insert into users (date, name, weather, kind, zip_code,Contents) values (?,?,?,?,?,?)'
     users = [
     (date, name, weather, kind, zip_code,Contents)
@@ -66,5 +67,5 @@ with closing(sqlite3.connect(dbname)) as conn:
     conn.commit()
 
 print("Content-type: text/html\n")
-
-print(find_data)
+#print(find_data)
+print(Contents)
