@@ -39,7 +39,6 @@
         <option value="https://www.nikkansports.com/">日刊スポーツ</option>
         <option value="https://news.biglobe.ne.jp/ranking/topics//">biglobe トピックス</option>
     </select><br>
-    <button type="button"  onclick="func_del()" >DBの1レコード削除 </button>
     <button type="button"  onclick="func_one()" >DBの1レコード表示 </button>
 
     レコード番号<input type="text" id="text3" size="10" value="" /><br>
@@ -53,8 +52,9 @@
 
 
 
-    <input class="button2"  type="button" value="クリア" onclick="clearTextarea()" >
+    <input class="button2"  type="button" value="クリア" onclick="clearTextarea()" ><br>
 
+    <button type="button"  onclick="func_del()" >DBの1レコード削除 </button><br>
     <p id="inbox"></p>
 
     <script src="https://code.jquery.com/jquery-2.2.4.js" ></script>
@@ -62,9 +62,15 @@
 <script>
 
     function clearTextarea() {
+	    var textareaForm = document.getElementById("text2");
+        textareaForm.value = '';
+	    var textareaForm = document.getElementById("text3");
+        textareaForm.value = '';
 	    var textareaForm = document.getElementById("text4");
         textareaForm.value = '';
 	    var textareaForm = document.getElementById("text5");
+        textareaForm.value = '';
+	    var textareaForm = document.getElementById("text6");
         textareaForm.value = '';
     }
 
