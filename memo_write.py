@@ -59,6 +59,7 @@ with closing(sqlite3.connect(dbname)) as conn:
         
     scraping_contents=find_data
     Contents = str(scraping_contents)
+    memo_title="<font color=\"red\">"  + memo_title + "</font>"
     insert_sql = 'insert into users (date, name, weather, kind, zip_code,Contents) values (?,?,?,?,?,?)'
     users = [
     (date, name, weather, kind, memo_title,Contents)
