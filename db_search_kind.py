@@ -72,9 +72,14 @@ with closing(sqlite3.connect(dbname)) as conn:
             add_string=" <input value=\"詳細\" onclick=\"func_one_2("
             add_string=add_string+str(number)
             add_string=add_string+")\"  type=\"button\"></input>"
-	
             find_data.append(add_string)
+            add_string2=" <input value=\"削除\" onclick=\"func_del_2("
+            add_string2=add_string2+str(number)
+            add_string2=add_string2+")\"  type=\"button\"></input>"
+            find_data.append(add_string2)
+
             find_data.append(row)
+
             find_data.append("<br>")
     except:
         pass
