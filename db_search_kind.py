@@ -68,6 +68,12 @@ with closing(sqlite3.connect(dbname)) as conn:
     try:
         for row in c.execute(select_sql):
             row=row[:6]
+            number=row[0]
+            add_string=" <input value=\"詳細\" onclick=\"func_one_2("
+            add_string=add_string+str(number)
+            add_string=add_string+")\"  type=\"button\"></input>"
+	
+            find_data.append(add_string)
             find_data.append(row)
             find_data.append("<br>")
     except:

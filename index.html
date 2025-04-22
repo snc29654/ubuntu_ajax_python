@@ -323,6 +323,32 @@
     }
 
 
+    function func_one_2(no) {
+        let str2 = document.getElementById("text3").value;
+        if(str2==""){
+            str2 = "";
+        }
+        let str4 = document.getElementById("text7").value;
+        if(str4==""){
+            str4 = scrapeaction.value;
+        }
+        str2 = no;
+        $.ajax({
+
+            url:'./db_view_one.py',
+            type:'POST',
+            data:{sent2:str2,sent4:str4}
+        })
+        .done(function(data){
+            var smp=document.getElementById("inbox");
+            smp.innerHTML = data;
+
+        })
+        .fail(function(){
+            var smp=document.getElementById("inbox");
+            smp.innerHTML = "failed";
+        });
+    }
 
     function  func_search(){
         let str2 = document.getElementById("text2").value;
