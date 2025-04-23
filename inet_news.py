@@ -42,12 +42,13 @@ def  data_print(url):
 
 
 zip_code=form.getvalue("sent2")
+news_comment=form.getvalue("sent3")
 
 find_data=data_print(zip_code)
 date = datetime.date.today()
 
 name="ニュース"
-weather=""
+weather=news_comment
 kind=""
 
 with closing(sqlite3.connect(dbname)) as conn:

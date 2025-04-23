@@ -45,7 +45,7 @@
 
     <button type="button"  onclick="func_ai()" >AIチャット </button>
     <button type="button"  onclick="func_memo()" >メモの記録(DB) </button><br>
-    メモ題名/AIチャットの質問<br>
+    メモ題名/AIチャットの質問/ニュースコメント<br>
     <input type="text" id="text5" size="66" value="" /><br>
     メモ内容<br>
     <textarea id="text4" name="Contents" ROWS=10 COLS=80></textarea><br>
@@ -384,6 +384,8 @@
         if(str2==""){
             str2 = scrapeaction.value;
         }
+        let str3 = document.getElementById("text5").value;
+
 
         let str4 = document.getElementById("text7").value;
         if(str4==""){
@@ -399,7 +401,7 @@
 
             url:'./inet_news.py',
             type:'POST',
-            data:{sent2:str2,sent4:str4,sent8:str8}
+            data:{sent2:str2,sent3:str3,sent4:str4,sent8:str8}
         })
         .done(function(data){
             var smp=document.getElementById("inbox");
