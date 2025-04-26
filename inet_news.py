@@ -66,6 +66,7 @@ with closing(sqlite3.connect(dbname)) as conn:
     Contents = Contents.replace ("\t","")
     Contents = Contents.replace ("。","。<br>")
     zip_code="<a href=\""+zip_code+"\" target=\"_blank\">"+zip_code+"</a>"
+    weather=weather.replace("\u3000"," ")
     insert_sql = 'insert into users (date, name, weather, kind, zip_code,Contents) values (?,?,?,?,?,?)'
     users = [
     (date, name, weather, kind, zip_code,Contents)
