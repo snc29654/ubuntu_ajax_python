@@ -525,6 +525,7 @@
         .done(function(data){
             var smp=document.getElementById("inbox");
             smp.innerHTML = data;
+	    func_search_kind();
 
         })
         .fail(function(){
