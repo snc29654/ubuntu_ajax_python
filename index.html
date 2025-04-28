@@ -67,6 +67,20 @@
 
 <script>
 
+    const shinhannin = () => {
+	const hannin = document.getElementById("scrapeaction");
+	const memo = document.getElementById("text5");
+	const hanninIndex = hannin.selectedIndex;
+	memo.value = hannin.options[hanninIndex].textContent;
+    }
+    document.getElementById("scrapeaction").onchange = shinhannin;
+
+
+
+
+
+
+
     function clearTextarea() {
 	    var textareaForm = document.getElementById("text2");
         textareaForm.value = '';
