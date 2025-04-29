@@ -15,7 +15,7 @@
     <button type="button"  onclick="func_head()" >DBのすべてを表示（詳細なし） </button>
     <button type="button"  onclick="func_last()" >DBの最後を表示 </button>
     <button type="button"  onclick="func_db_search()" >DB内を検索 </button><br>
-    <button type="button"  onclick="func_search_kind()" >DB内種別リスト </button>
+    <button type="button"  onclick="func_search_kind()" >履歴カテゴリ </button>
     <select name="nameaction" id="nameaction">
         <option value="ニュース">ニュース</option>
         <option value="AIチャット">AIチャット</option>
@@ -433,7 +433,10 @@
         }
         let str3 = document.getElementById("text5").value;
 
-
+	if(str3==""){
+		alert("ニュースカテゴリが未選択です");
+		return;
+	}
         let str4 = document.getElementById("text7").value;
         if(str4==""){
             str4 = scrapeaction.value;
