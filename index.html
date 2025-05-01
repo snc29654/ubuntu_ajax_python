@@ -15,12 +15,13 @@
     <button type="button"  onclick="func_head()" >DBのすべてを表示（詳細なし） </button>
     <button type="button"  onclick="func_last()" >DBの最後を表示 </button>
     <button type="button"  onclick="func_db_search()" >DB内を検索 </button><br>
-    <button type="button"  onclick="func_search_kind()" >履歴カテゴリ </button>
+    <button type="button"  onclick="func_search_kind()" >カテゴリ別履歴 </button>
     <select name="nameaction" id="nameaction">
         <option value="ニュース">ニュース</option>
         <option value="AIチャット">AIチャット</option>
         <option value="検索">検索</option>
         <option value="メモ">メモ</option>
+        <option value="お気に入り">お気に入り</option>
     </select>
     <button type="button"  onclick="func_search_kind_detail()" >内容表示 </button><br>
     <button type="button"  onclick="func_list()" >URLリスト</button>
@@ -49,6 +50,7 @@
         <option value="https://news.biglobe.ne.jp/ranking/topics//">biglobe トピックス</option>
         <option value="https://www.nikkei.com/business/net-media/">日経ビジネス</option>
     </select><br>
+    <button type="button"  onclick="func_favorite()" >お気に入り追加</button><br>  
     URL<input type="text" id="text6" size="75" value="" /><br>
     <button type="button"  onclick="func_one()" >DBの1レコード表示 </button>
 
@@ -56,7 +58,7 @@
 
     <button type="button"  onclick="func_ai()" >AIチャット </button>
     <button type="button"  onclick="func_memo()" >メモの記録(DB) </button><br>
-    メモ題名/AIチャットの質問/ニュースコメント<br>
+    メモ題名/AIチャットの質問/ニュースコメント/お気に入り名称<br>
     <input type="text" id="text5" size="66" value="" /><br>
     メモ内容<br>
     <textarea id="text4" name="Contents" ROWS=10 COLS=80></textarea><br>
@@ -470,6 +472,42 @@
 
 
     }
+    function  func_favorite(){
+        let str2 = document.getElementById("text6").value;
+        if(str2==""){
+            str2 = scrapeaction.value;
+        }
+        let str3 = document.getElementById("text5").value;
+
+        let str4 = document.getElementById("text7").value;
+        if(str4==""){
+            str4 = scrapeaction.value;
+        }
+
+        let str8 = document.getElementById("text8").value;
+        if(str8==""){
+            str8 = "a";
+        }
+
+        $.ajax({
+
+            url:'./inet_favorite.py',
+            type:'POST',
+            data:{sent2:str2,sent3:str3,sent4:str4,sent8:str8}
+        })
+        .done(function(data){
+            var smp=document.getElementById("inbox");
+            smp.innerHTML = data;
+
+        })
+        .fail(function(){
+            var smp=document.getElementById("inbox");
+            smp.innerHTML = "failed";
+        });
+
+
+    }
+
 
     function  func_list(){
         let str2 = document.getElementById("text6").value;
