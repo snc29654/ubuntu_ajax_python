@@ -6,15 +6,15 @@
 </head>
 <body>
     DB名<input type="text" id="text7" size="15" value="database.db" /><br>
-    <button type="button" style="width:100px;height:50px" onclick="func_search()">検索実行</button>
+    <button type="button" style="width:100px;height:50px" onclick="func_search()">ネット検索</button>
+    <button type="button" style="width:100px;height:50px"  onclick="func_db_search()" >DB検索 </button>
 
     <label for="area">下記に検索ワードを入れてください</label>
     <br>
     <input type="text" id="text2" size="80" value="" /><br>
     <button type="button"  onclick="func_all()" >DBのすべてを表示 </button>
     <button type="button"  onclick="func_head()" >DBのすべてを表示（詳細なし） </button>
-    <button type="button"  onclick="func_last()" >DBの最後を表示 </button>
-    <button type="button"  onclick="func_db_search()" >DB内を検索 </button><br>
+    <button type="button"  onclick="func_last()" >DBの最後を表示 </button><br>
     <button type="button"  onclick="func_search_kind()" >カテゴリ別履歴 </button>
     <select name="nameaction" id="nameaction">
         <option value="ニュース">ニュース</option>
