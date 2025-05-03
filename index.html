@@ -83,8 +83,13 @@
     document.getElementById("scrapeaction").onchange = shinhannin;
 
 
+    function inputChange(event){
+        console.log(event.currentTarget.value);
+        func_search_kind();
 
-
+    }
+    let nameaction = document.getElementById('nameaction');
+    nameaction.addEventListener('change', inputChange);
 
 
 
