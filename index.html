@@ -163,6 +163,13 @@
     }
     document.getElementById("scrapeaction").onchange = shinhannin;
 
+    const shintenki = () => {
+	const tenki = document.getElementById("area");
+	const memo = document.getElementById("text5");
+	const tenkiIndex = tenki.selectedIndex;
+	memo.value = tenki.options[tenkiIndex].textContent;
+    }
+    document.getElementById("area").onchange = shintenki;
 
     function inputChange(event){
         console.log(event.currentTarget.value);

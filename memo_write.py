@@ -61,7 +61,7 @@ with closing(sqlite3.connect(dbname)) as conn:
     Contents = str(scraping_contents)
     Contents = Contents.replace ("\n","")
     Contents = Contents.replace ("\t","")
-
+    Contents=Contents.replace("\u3000"," ")
     memo_title="<font color=\"red\">"  + memo_title + "</font>" + "<br>"
     insert_sql = 'insert into users (date, name, weather, kind, zip_code,Contents) values (?,?,?,?,?,?)'
     users = [
