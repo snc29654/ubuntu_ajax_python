@@ -142,6 +142,8 @@
               // 完了したときの処理
               complete:function(){
                 console.log("通信が完了しました。");
+
+		func_memo();
               },
               // 失敗したときの処理
               error:function(){
@@ -167,7 +169,7 @@
 	const tenki = document.getElementById("area");
 	const memo = document.getElementById("text5");
 	const tenkiIndex = tenki.selectedIndex;
-	memo.value = tenki.options[tenkiIndex].textContent;
+	memo.value = tenki.options[tenkiIndex].textContent+"の天気";
     }
     document.getElementById("area").onchange = shintenki;
 
