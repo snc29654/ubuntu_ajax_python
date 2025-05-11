@@ -97,7 +97,7 @@ find_data=copy_link(zip_code)
 
 date = datetime.date.today()
 
-name=""
+name="URLリスト"
 weather=""
 kind=""
 
