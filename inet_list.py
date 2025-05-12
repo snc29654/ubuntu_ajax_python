@@ -25,6 +25,7 @@ from urllib.parse import urljoin
 cgitb.enable()
 form=cgi.FieldStorage()
 dbname='./'+ form.getvalue("sent4")
+news_comment=form.getvalue("sent3")
 
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
@@ -98,7 +99,7 @@ find_data=copy_link(zip_code)
 date = datetime.date.today()
 
 name="URLリスト"
-weather=""
+weather=news_comment
 kind=""
 
 with closing(sqlite3.connect(dbname)) as conn:
