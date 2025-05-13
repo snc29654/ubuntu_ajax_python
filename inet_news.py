@@ -62,6 +62,7 @@ with closing(sqlite3.connect(dbname)) as conn:
         
     scraping_contents=find_data
     Contents = str(scraping_contents)
+    Contents=Contents.replace("<a","<a target=\"_blank\"")
     Contents = Contents.replace ("\n","")
     Contents = Contents.replace ("\t","")
     Contents = Contents.replace ("。","。<br>")
