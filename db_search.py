@@ -67,7 +67,9 @@ with closing(sqlite3.connect(dbname)) as conn:
     select_sql = 'select * from users where Contents like '+'"%'+str(zip_code)+'%"'
     try:
         for row in c.execute(select_sql):
-            find_data.append(row)
+            row_str=str(row)
+            row_str=row_str.replace(zip_code,"<font color=\"red\">"  + zip_code + "</font>" )
+            find_data.append(row_str)
     except:
         pass
 
