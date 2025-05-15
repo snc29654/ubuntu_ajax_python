@@ -59,6 +59,7 @@ with closing(sqlite3.connect(dbname)) as conn:
     scraping_contents=find_data
     Contents = str(scraping_contents)
     Contents=Contents.replace("<a","<a target=\"_blank\"")
+    Contents=Contents.replace(zip_code,"<font color=\"red\">"  + zip_code + "</font>" )
     zip_code="<font color=\"red\">"  + zip_code + "</font>"
     zip_code=zip_code.replace("\u3000"," ")
     insert_sql = 'insert into users (date, name, weather, kind, zip_code,Contents) values (?,?,?,?,?,?)'
