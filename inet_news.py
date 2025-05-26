@@ -49,7 +49,7 @@ date = datetime.date.today()
 
 name="ニュース"
 weather=news_comment
-kind=""
+kind=find_all_param
 
 with closing(sqlite3.connect(dbname)) as conn:
     c = conn.cursor()
