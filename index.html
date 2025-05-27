@@ -17,12 +17,12 @@
     <button type="button"  onclick="func_last()" >DBの最後を表示 </button><br>
     <button type="button"  onclick="func_search_kind()" >カテゴリ別履歴 </button>
     <select name="nameaction" id="nameaction">
+        <option value="お気に入り">お気に入り</option>
         <option value="ニュース">ニュース</option>
         <option value="URLリスト">URLリスト</option>
         <option value="AIチャット">AIチャット</option>
         <option value="検索">検索</option>
         <option value="メモ">メモ</option>
-        <option value="お気に入り">お気に入り</option>
     </select>
     <button type="button"  onclick="func_search_kind_detail()" >内容表示 </button><br>
 
@@ -125,7 +125,6 @@
     <script src="https://code.jquery.com/jquery-2.2.4.js" ></script>
 
 <script>
-
     function checkButton(){
     $(function(){
             var url = "https://www.jma.go.jp/bosai/forecast/data/overview_forecast/"+area.value+".json";
