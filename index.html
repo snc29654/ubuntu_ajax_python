@@ -23,6 +23,7 @@
         <option value="AIチャット">AIチャット</option>
         <option value="検索">検索</option>
         <option value="メモ">メモ</option>
+        <option value="ごみ箱">ごみ箱</option>
     </select>
     <button type="button"  onclick="func_search_kind_detail()" >内容表示 </button><br>
 
@@ -120,7 +121,8 @@
 
     <input class="button2"  type="button" value="クリア" onclick="clearTextarea()" ><br>
 
-    <button type="button"  onclick="func_del()" >DBの1レコード削除 </button><br>
+    <button type="button"  onclick="func_del()" >DBの1レコード削除 </button>
+    <button type="button"  onclick="func_trush()" >ごみ箱を空にする</button><br>
     <p id="inbox"></p>
 
     <script src="https://code.jquery.com/jquery-2.2.4.js" ></script>
@@ -725,7 +727,34 @@
 
 
     }
+    function  func_trush(){
+        let str2 = document.getElementById("text3").value;
+        if(str2==""){
+            str2 = "";
+        }
+        let str4 = document.getElementById("text7").value;
+        if(str4==""){
+            str4 = scrapeaction.value;
+        }
 
+        $.ajax({
+
+            url:'./db_trush.py',
+            type:'POST',
+            data:{sent2:str2,sent4:str4}
+        })
+        .done(function(data){
+            var smp=document.getElementById("inbox");
+            smp.innerHTML = data;
+
+        })
+        .fail(function(){
+            var smp=document.getElementById("inbox");
+            smp.innerHTML = "failed";
+        });
+
+
+    }
 
     function  func_del_2(no){
         let str2 = document.getElementById("text3").value;

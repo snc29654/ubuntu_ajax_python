@@ -57,11 +57,11 @@ with closing(sqlite3.connect(dbname)) as conn:
     except:
         pass
 
-    select_sql = 'update users set name="ごみ箱" where id ='+ str(zip_code)
-    #select_sql = 'delete  from users where id ='+ str(zip_code)
+    #select_sql = 'update users set name="ごみ箱" where id ='+ str(zip_code)
+    select_sql = 'delete  from users where name="ごみ箱"'
     c.execute(select_sql)
     conn.commit()
 
 print("Content-type: text/html\n")
 
-print(str(zip_code)+"をごみ箱へ移動しました")
+print("ごみ箱空にしました")
