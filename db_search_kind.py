@@ -85,6 +85,11 @@ with closing(sqlite3.connect(dbname)) as conn:
             add_string2=add_string2+")\"  type=\"button\"></input>"
             find_data.append(add_string2)
 
+            add_string4=" <input value=\"お気に入りへ\" style=\"background-color:gray\" onclick=\"func_chg_1("
+            add_string4=add_string4+str(number)
+            add_string4=add_string4+")\"  type=\"button\"></input>"
+            find_data.append(add_string4)
+
             find_data.append(row)
 
             find_data.append("<br>")

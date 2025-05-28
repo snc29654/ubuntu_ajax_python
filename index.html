@@ -670,6 +670,31 @@
 
 
     }
+    function  func_chg_1(no){
+        let str2 = no;
+        let str4 = document.getElementById("text7").value;
+        if(str4==""){
+            str4 = scrapeaction.value;
+        }
+
+        $.ajax({
+
+            url:'./db_chg.py',
+            type:'POST',
+            data:{sent2:str2,sent4:str4}
+        })
+        .done(function(data){
+            var smp=document.getElementById("inbox");
+            smp.innerHTML = data;
+
+        })
+        .fail(function(){
+            var smp=document.getElementById("inbox");
+            smp.innerHTML = "failed";
+        });
+
+
+    }
 
 
     function  func_del(){
