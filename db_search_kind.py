@@ -79,11 +79,18 @@ with closing(sqlite3.connect(dbname)) as conn:
             add_string3=add_string3+str(number)
             add_string3=add_string3+")\"  type=\"button\"></input>"
             find_data.append(add_string3)
+            if(str(zip_code)=="ごみ箱"):
+                add_string2=" <input value=\"削除\" style=\"background-color:gray\" onclick=\"func_trush_one("
+                add_string2=add_string2+str(number)
+                add_string2=add_string2+")\"  type=\"button\"></input>"
+                find_data.append(add_string2)
 
-            add_string2=" <input value=\"削除\" style=\"background-color:gray\" onclick=\"func_del_2("
-            add_string2=add_string2+str(number)
-            add_string2=add_string2+")\"  type=\"button\"></input>"
-            find_data.append(add_string2)
+            else:
+
+                add_string2=" <input value=\"削除\" style=\"background-color:gray\" onclick=\"func_del_2("
+                add_string2=add_string2+str(number)
+                add_string2=add_string2+")\"  type=\"button\"></input>"
+                find_data.append(add_string2)
 
             add_string4=" <input value=\"お気に入りへ\" style=\"background-color:gray\" onclick=\"func_chg_1("
             add_string4=add_string4+str(number)
