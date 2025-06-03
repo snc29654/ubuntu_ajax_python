@@ -68,7 +68,8 @@ def  copy_link(url):
 
     text = ""
     for result in results:
-        text +=  "<a href= \"" + result["url"] +  "\"" +" target=\"_blank\"" + "</a>"+result["text"] +"\t" +"<br>" +"\n"   
+        text +=  "<a href= \"" + result["url"] +  "\"" +" target=\"_blank\"" + "</a>" +"<br>" +"\n"   
+        text +=  result["text"] +"<br>"   
     return(text)
 
 
