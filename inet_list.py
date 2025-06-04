@@ -63,45 +63,38 @@ def  get_link(url):
     return results
 
 
-def  copy_link(url):
+def  copy_link(url,filter):
     results = get_link(url)
-
+    f = open('tracefile.txt', 'w', encoding='UTF-8')
     text = ""
     for result in results:
-        text +=  "<a href= \"" + result["url"] +  "\"" +" target=\"_blank\"" + "</a>" +"<br>" +"\n"   
-        text +=  result["text"] +"<br>"   
+        result_text = result["text"]
+        if  filter == "all":
+            text +=  "<a href= \"" + result["url"] +  "\"" +" target=\"_blank\"" + "</a>" +"<br>" +"\n"   
+            text +=  result["text"] +"<br>"   
+            f.write(result["text"])
+            f.write("\n")
+        else:
+            if  filter in result_text:
+                text +=  "<a href= \"" + result["url"] +  "\"" +" target=\"_blank\"" + "</a>" +"<br>" +"\n"   
+                text +=  result["text"] +"<br>"   
+                f.write(result["text"])
+                f.write("\n")
+
+
     return(text)
-
-
-def  data_print(url):
-    global zip_code
-
-    params = {'p':zip_code,
-          'search.x':'1',
-          'fr':'top_ga1_sa',
-          'tid':'top_ga1_sa',
-          'ei':'UTF-8',
-          'aq':'',
-          'oq':'',
-          'afs':'',}
-
-    r = requests.get(url)
-
-    data = BeautifulSoup(r.content, 'html.parser')
-    find_data=data.find_all("a")
-    return(find_data)
 
 
 
 zip_code=form.getvalue("sent2")
-
-find_data=copy_link(zip_code)
+filter=form.getvalue("sent5")
+find_data=copy_link(zip_code,filter)
 
 date = datetime.date.today()
 
 name="URLリスト"
 weather=news_comment
-kind=""
+kind=filter
 
 with closing(sqlite3.connect(dbname)) as conn:
     c = conn.cursor()

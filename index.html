@@ -102,7 +102,8 @@
         <option value="https://news.biglobe.ne.jp/ranking/topics//">biglobe トピックス</option>
         <option value="https://www.nikkei.com/business/net-media/">日経ビジネス</option>
     </select>
-    <button type="button"  onclick="func_list()" >URLリスト</button><br>
+    <button type="button"  onclick="func_list()" >URLリスト</button>
+    フィルター<input type="text" id="text9" size="10" value="all" /><br>
     <button type="button"  onclick="func_favorite()" >お気に入り追加</button><br>  
     URL<input type="text" id="text6" size="75" value="" /><br>
     <button type="button"  onclick="func_one()" >DBの1レコード表示 </button>
@@ -608,6 +609,7 @@
 
 
     function  func_list(){
+        let str5 = document.getElementById("text9").value;
         let str2 = document.getElementById("text6").value;
         if(str2==""){
             str2 = scrapeaction.value;
@@ -629,7 +631,7 @@
 
             url:'./inet_list.py',
             type:'POST',
-            data:{sent2:str2,sent3:str3,sent4:str4}
+            data:{sent2:str2,sent3:str3,sent4:str4,sent5:str5}
         })
         .done(function(data){
             var smp=document.getElementById("inbox");
