@@ -31,15 +31,22 @@ sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
 zip_code=[]
 def  get_link(url):
+    f = open('links.txt', 'w', encoding='UTF-8')
     res = requests.get(url)
     res.raise_for_status()
 
     soup = bs4.BeautifulSoup(res.text, "lxml")
     links = soup.select("a")
 
+    type_links=type(links)
+    f.write(str(type_links))
+    f.write("\n")
+
     keys = set()
     results = []
     for link in links:
+        f.write(link.text)
+        f.write("\n")
         link_url = link.get("href")
         if not link_url:
             continue
@@ -73,12 +80,14 @@ def  copy_link(url,filter):
             text +=  "<a href= \"" + result["url"] +  "\"" +" target=\"_blank\"" + "</a>" +"<br>" +"\n"   
             text +=  result["text"] +"<br>"   
             f.write(result["text"])
+            f.write("<br>")
             f.write("\n")
         else:
             if  filter in result_text:
                 text +=  "<a href= \"" + result["url"] +  "\"" +" target=\"_blank\"" + "</a>" +"<br>" +"\n"   
                 text +=  result["text"] +"<br>"   
                 f.write(result["text"])
+                f.write("<br>")
                 f.write("\n")
 
 
@@ -119,4 +128,8 @@ with closing(sqlite3.connect(dbname)) as conn:
 
 print("Content-type: text/html\n")
 
+f = open('tracefile.txt', 'r', encoding='UTF-8')
+read_data=f.read()
+
+print(read_data)
 print(find_data)
