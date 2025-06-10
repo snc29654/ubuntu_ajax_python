@@ -80,11 +80,10 @@ def  copy_link(url,filter):
             text +=  "<a href= \"" + result["url"] +  "\"" +" target=\"_blank\"" + "</a>" +"<br>" +"\n"   
             text +=  result["text"] +"<br>"   
 
-            #f.write("<a href=")
             f.write(result["text"])
-            #f.write("</a>")
             f.write("<br>")
             f.write(result["url"])
+            f.write("<br>")
             f.write("<br>")
             f.write("\n")
         else:
@@ -94,6 +93,7 @@ def  copy_link(url,filter):
                 f.write(result["text"])
                 f.write("<br>")
                 f.write(result["url"])
+                f.write("<br>")
                 f.write("<br>")
                 f.write("\n")
 
