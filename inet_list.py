@@ -138,5 +138,12 @@ print("Content-type: text/html\n")
 f = open('tracefile.txt', 'r', encoding='UTF-8')
 read_data=f.read()
 
+
+print("<font color=\"red\">"  + "テキスト表示" + "</font>")
+print("<br>")
 print(read_data)
+print("<br>")
+print("<br>")
+print("<br>")
+print("<font color=\"green\">"  + "リンク表示" + "</font>")
 print(find_data)
