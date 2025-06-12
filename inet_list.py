@@ -79,6 +79,7 @@ def  copy_link(url,filter):
         if  filter == "all":
             text +=  "<a href= \"" + result["url"] +  "\"" +" target=\"_blank\"" + "</a>" +"<br>" +"\n"   
             text +=  result["text"] +"<br>"   
+            text +=  "<div>"+result["url"] +"</div>"   
 
             f.write(result["text"])
             f.write("<br>")
@@ -139,11 +140,11 @@ f = open('tracefile.txt', 'r', encoding='UTF-8')
 read_data=f.read()
 
 
-print("<font color=\"red\">"  + "テキスト表示" + "</font>")
-print("<br>")
-print(read_data)
-print("<br>")
-print("<br>")
-print("<br>")
+#print("<font color=\"red\">"  + "テキスト表示" + "</font>")
+#print("<br>")
+#print(read_data)
+#print("<br>")
+#print("<br>")
+#print("<br>")
 print("<font color=\"green\">"  + "リンク表示" + "</font>")
 print(find_data)
