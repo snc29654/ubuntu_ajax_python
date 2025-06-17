@@ -700,7 +700,37 @@
 
 
     }
+    function  func_chg_sub_title(no){
+        let str2 = no;
+        let str4 = document.getElementById("text7").value;
+        if(str4==""){
+            str4 = scrapeaction.value;
+        }
+        let str5 = document.getElementById("text5").value;
+        if(str5==""){
+            alert("サブタイトル未入力");
+            return;
+        }
 
+        $.ajax({
+
+            url:'./chg_sub_title.py',
+            type:'POST',
+            data:{sent2:str2,sent4:str4,sent5:str5}
+        })
+        .done(function(data){
+            var smp=document.getElementById("inbox");
+            smp.innerHTML = data;
+            func_search_kind();
+
+        })
+        .fail(function(){
+            var smp=document.getElementById("inbox");
+            smp.innerHTML = "failed";
+        });
+
+
+    }
 
     function  func_del(){
         let str2 = document.getElementById("text3").value;
