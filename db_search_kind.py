@@ -37,6 +37,7 @@ def  data_print(url):
     return(data)
 
 
+f = open('tracefile.txt', 'w', encoding='UTF-8')
 
 zip_code=form.getvalue("sent2")
 
@@ -69,6 +70,53 @@ with closing(sqlite3.connect(dbname)) as conn:
         for row in c.execute(select_sql):
             row=row[:6]
             number=row[0]
+
+            row3=row[3]
+
+
+
+            add_string7="<script>    "
+            add_string7=add_string7+"function  func_chg_sub_title"
+            add_string7=add_string7+str(number)
+            add_string7=add_string7+"(no){"
+            add_string7=add_string7+"let str2 = no;"
+            add_string7=add_string7+"let str4 = document.getElementById(\"text7\").value;"
+            add_string7=add_string7+"if(str4==\"\"){"
+            add_string7=add_string7+"str4 = scrapeaction.value;"
+            add_string7=add_string7+"}"
+            add_string7=add_string7+"let str5 = document.getElementById(\""
+            add_string7=add_string7+str(number)
+            add_string7=add_string7+"\").value;"
+            add_string7=add_string7+"if(str5==\"\"){"
+            add_string7=add_string7+"alert(\"サブタイトル未入力\");"
+            add_string7=add_string7+"return;"
+            add_string7=add_string7+"}"
+
+            add_string7=add_string7+"$.ajax({"
+
+            add_string7=add_string7+"url:'./chg_sub_title.py',"
+            add_string7=add_string7+"type:'POST',"
+            add_string7=add_string7+"data:{sent2:str2,sent4:str4,sent5:str5}"
+            add_string7=add_string7+"})"
+            add_string7=add_string7+".done(function(data){"
+            add_string7=add_string7+"var smp=document.getElementById(\"inbox\");"
+            add_string7=add_string7+"smp.innerHTML = data;"
+            add_string7=add_string7+"func_search_kind();"
+
+            add_string7=add_string7+"})"
+            add_string7=add_string7+".fail(function(){"
+            add_string7=add_string7+"var smp=document.getElementById(\"inbox\");"
+            add_string7=add_string7+"smp.innerHTML = \"failed\";"
+            add_string7=add_string7+"});"
+
+            add_string7=add_string7+"}"
+
+            add_string7=add_string7+" </script>"
+
+            find_data.append(add_string7)
+
+            f.write(add_string7)
+
 
             add_string=" <input value=\"詳細\"  style=\"background-color:lightgreen\" onclick=\"func_one_2("
             add_string=add_string+str(number)
@@ -103,6 +151,28 @@ with closing(sqlite3.connect(dbname)) as conn:
             add_string5=add_string5+")\"  type=\"button\"></input>"
             find_data.append(add_string5)
 
+
+
+
+            add_string6=" <input type=\"text\" id="
+            add_string6=add_string6+str(number)
+            add_string6=add_string6+" size=\"80\" value=\""
+            add_string6=add_string6+ str(row3)
+            add_string6=add_string6+" \" /><br>"
+            find_data.append(add_string6)
+
+            add_string8=" <input value=\"変更\" style=\"background-color:gray\" onclick=\"func_chg_sub_title"
+            add_string8=add_string8+str(number)
+            add_string8=add_string8+"("
+            add_string8=add_string8+str(number)
+            add_string8=add_string8+")\"  type=\"button\"></input>"
+            find_data.append(add_string8)
+
+
+
+            f.write(add_string8)
+
+
             find_data.append(row)
 
             find_data.append("<br>")
@@ -112,8 +182,6 @@ with closing(sqlite3.connect(dbname)) as conn:
     conn.commit()
 
 print("Content-type: text/html\n")
-
-
 
 
 
