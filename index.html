@@ -26,7 +26,8 @@
         <option value="メモ">メモ</option>
         <option value="ごみ箱">ごみ箱</option>
     </select>
-    <button type="button"  onclick="func_search_kind_detail()" >内容表示 </button><br>
+    <button type="button"  onclick="func_search_kind_detail()" >内容表示 </button>
+    <button type="button"  onclick="func_ajax_test()" >ajax_test</button><br>
 
     <label for="area">天気予報の地域を選択してください</label>
     <select id="area">
@@ -338,6 +339,36 @@
             smp.innerHTML = "failed";
         });
     }
+
+    function func_ajax_test() {
+        let str2 = nameaction.value;
+        if(str2==""){
+            str2 = "";
+        }
+        let str4 = document.getElementById("text7").value;
+        if(str4==""){
+            str4 = scrapeaction.value;
+        }
+        $.ajax({
+            url:'./ajax_test.py',
+            type:'POST',
+            data:{sent2:str2,sent4:str4}
+        })
+        .done(function(data){
+            var smp=document.getElementById("inbox");
+            smp.innerHTML = data;
+            alert(data);
+
+        })
+        .fail(function(){
+            var smp=document.getElementById("inbox");
+            smp.innerHTML = "failed";
+        });
+    }
+
+
+
+
     function func_search_kind_detail() {
         let str2 = nameaction.value;
         if(str2==""){
@@ -880,4 +911,3 @@
 
 </body>
 </html>
-
