@@ -72,6 +72,7 @@ with closing(sqlite3.connect(dbname)) as conn:
             number=row[0]
 
             row3=row[3]
+            row5=row[5]
 
 
 
@@ -161,7 +162,7 @@ with closing(sqlite3.connect(dbname)) as conn:
             add_string6=add_string6+" \" /><br>"
             find_data.append(add_string6)
 
-            add_string8=" <input value=\"変更\" style=\"background-color:gray\" onclick=\"func_chg_sub_title"
+            add_string8=" <input value=\"null\" style=\"background-color:gray\" onclick=\"func_chg_sub_title"
             add_string8=add_string8+str(number)
             add_string8=add_string8+"("
             add_string8=add_string8+str(number)

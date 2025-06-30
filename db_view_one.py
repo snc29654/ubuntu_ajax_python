@@ -75,8 +75,11 @@ with closing(sqlite3.connect(dbname)) as conn:
 
 print("Content-type: text/html\n")
 
+string8=""
+string8=string8+" <input value=\"サブタイトル変更\" style=\"background-color:gray\" onclick=\"func_chg_sub_title("
+string8=string8+str(zip_code)
+string8=string8+")\"  type=\"button\"></input>"
 
 
-
-
+print(string8)
 print(find_data)
