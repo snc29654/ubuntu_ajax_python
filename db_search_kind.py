@@ -157,10 +157,10 @@ with closing(sqlite3.connect(dbname)) as conn:
 
             add_string6=" <input type=\"text\" id="
             add_string6=add_string6+str(number)
-            add_string6=add_string6+" size=\"80\" value=\""
+            add_string6=add_string6+" size=\"160\" value=\""
             add_string6=add_string6+ str(row3)
             add_string6=add_string6+" \" /><br>"
-            find_data.append(add_string6)
+            #find_data.append(add_string6)
 
             add_string8=" <input value=\"null\" style=\"background-color:gray\" onclick=\"func_chg_sub_title"
             add_string8=add_string8+str(number)
