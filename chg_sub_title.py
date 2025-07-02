@@ -22,7 +22,7 @@ sub_title=[]
 
 zip_code=form.getvalue("sent2")
 sub_title=form.getvalue("sent5")
-
+sub_title="<font color=\"green\">"  + sub_title + "</font>" + "<br>"
 
 date = datetime.date.today()
 
