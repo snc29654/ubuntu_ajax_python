@@ -40,7 +40,7 @@ with closing(sqlite3.connect(dbname)) as conn:
         pass
         
     #select_sql = 'update users set weather = ? where id =?',(str(sub_title), str(zip_code))
-    c.execute("UPDATE users SET weather = ? WHERE id = ?", (sub_title, zip_code))
+    c.execute("UPDATE users SET kind = ? WHERE id = ?", (sub_title, zip_code))
     conn.commit()
 
 print("Content-type: text/html\n")
