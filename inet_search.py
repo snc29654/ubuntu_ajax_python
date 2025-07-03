@@ -81,7 +81,7 @@ with closing(sqlite3.connect(dbname)) as conn:
 
     insert_sql = 'insert into users (date, name, weather, kind, zip_code,Contents) values (?,?,?,?,?,?)'
     users = [
-    (date, name, weather, kind, zip_code,Contents)
+    (date, name, zip_code, kind, weather,Contents)
     ]
     c.executemany(insert_sql, users)
     conn.commit()

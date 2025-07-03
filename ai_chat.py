@@ -80,7 +80,7 @@ with closing(sqlite3.connect(dbname)) as conn:
     memo_title=memo_title.replace("\u3000"," ")
     insert_sql = 'insert into users (date, name, weather, kind, zip_code,Contents) values (?,?,?,?,?,?)'
     users = [
-    (date, name, weather, kind, memo_title,Contents)
+    (date, name, memo_title, kind, weather,Contents)
     ]
     c.executemany(insert_sql, users)
     conn.commit()
