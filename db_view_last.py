@@ -67,6 +67,7 @@ with closing(sqlite3.connect(dbname)) as conn:
     select_sql = 'select * from users where id in ( select max( id ) from users )'
     try:
         for row in c.execute(select_sql):
+            last_id=row[0]
             find_data.append(row)
     except:
         pass
@@ -75,7 +76,13 @@ with closing(sqlite3.connect(dbname)) as conn:
 
 print("Content-type: text/html\n")
 
+string8=""
+string8=string8+" <input value=\"サブタイトル変更\" style=\"background-color:gray\" onclick=\"func_chg_sub_title("
+string8=string8+str(last_id)
+string8=string8+")\"  type=\"button\"></input>"
 
+
+print(string8)
 
 
 
