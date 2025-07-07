@@ -37,7 +37,10 @@ def  data_print(url):
 
     data = BeautifulSoup(r.content, 'html.parser')
     find_data=data.find_all(find_all_param)
-    return(find_data)
+    if(find_all_param=="direct"):
+        return(data)
+    else: 
+        return(find_data)
 
 
 
