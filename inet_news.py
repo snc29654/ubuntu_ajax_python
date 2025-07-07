@@ -77,8 +77,21 @@ with closing(sqlite3.connect(dbname)) as conn:
     (date, name, weather, kind, zip_code,Contents)
     ]
     c.executemany(insert_sql, users)
+    c.execute("SELECT MAX(id) FROM users")
+    inserted_id = c.fetchone()[0]
+
+
     conn.commit()
 
 print("Content-type: text/html\n")
+
+print(f"挿入されたID: {inserted_id}")
+add_string5=" <input value=\"サブタイトル変更\" style=\"background-color:gray\" onclick=\"func_chg_sub_title("
+add_string5=add_string5+str(inserted_id)
+add_string5=add_string5+")\"  type=\"button\"></input>"
+print(add_string5)
+
+
+
 Contents=Contents.replace("<a","<a target=\"_blank\"")
 print(Contents)
