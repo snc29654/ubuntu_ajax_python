@@ -80,7 +80,19 @@
 	<input type="button" value="天気予報を見る" onclick="checkButton()"><br>
 
     <button type="button"  onclick="func_news()" >ニュース</button>URLが優先/  
-    find_allのパラメータ<input type="text" id="text8" size="10" value="a" /><br>
+    find_allのパラメータ<input type="text" id="text8" size="10" value="a" />
+    find_all選択肢<select name="findall" id="findall">
+        <option value="a">a</option>
+        <option value="p">p</option>
+        <option value="div">div</option>
+        <option value="img">img</option>
+        <option value="picture">picture</option>
+        <option value="li">li</option>
+        <option value="span">span</option>
+        <option value="direct">direct</option>
+    </select><br>
+
+
     ニュースカテゴリ<select name="scrapeaction" id="scrapeaction">
         <option value="http://localhost">--------</option>
         <option value="https://kandorastart.com/karyu">華流ドラマ（中国・台湾ドラマ）</option>
@@ -161,6 +173,13 @@
           };
 
 
+    const shinfindall = () => {
+        const findall = document.getElementById("findall");
+        const memo1 = document.getElementById("text8");
+        const findallIndex = findall.selectedIndex;
+        memo1.value = findall.options[findallIndex].textContent;
+    }
+    document.getElementById("findall").onchange = shinfindall;
 
 
     const shinhannin = () => {
