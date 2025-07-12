@@ -8,6 +8,7 @@
     DB名<input type="text" id="text7" size="15" value="database.db" /><br>
     <button type="button" style="width:100px;height:50px" onclick="func_search()">ネット検索</button>
     <button type="button" style="width:100px;height:50px"  onclick="func_db_search()" >DB検索 </button>
+    <button type="button" style="width:100px;height:50px"  onclick="func_db_search_detail()" >DB検索詳細 </button>
 
     <label for="area">下記に検索ワードを入れてください</label>
     <br>
@@ -321,6 +322,32 @@
         }
         $.ajax({
             url:'./db_search.py',
+            type:'POST',
+            data:{sent2:str2,sent4:str4}
+        })
+        .done(function(data){
+            var smp=document.getElementById("inbox");
+            smp.innerHTML = data;
+
+        })
+        .fail(function(){
+            var smp=document.getElementById("inbox");
+            smp.innerHTML = "failed";
+        });
+    }
+
+
+   function func_db_search_detail() {
+        let str2 = document.getElementById("text2").value;
+        if(str2==""){
+            str2 = "";
+        }
+        let str4 = document.getElementById("text7").value;
+        if(str4==""){
+            str4 = scrapeaction.value;
+        }
+        $.ajax({
+            url:'./db_search_detail.py',
             type:'POST',
             data:{sent2:str2,sent4:str4}
         })
