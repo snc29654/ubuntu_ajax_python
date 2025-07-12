@@ -75,6 +75,10 @@ with closing(sqlite3.connect(dbname)) as conn:
             find_data.append(add_string)
 
 
+            add_string2=" <input value=\"削除\" style=\"background-color:gray\" onclick=\"func_del_2("
+            add_string2=add_string2+str(number)
+            add_string2=add_string2+")\"  type=\"button\"></input>"
+            find_data.append(add_string2)
 
             row_str=str(row[:6])
             row_str=row_str.replace(zip_code,"<font color=\"red\">"  + zip_code + "</font>" )
