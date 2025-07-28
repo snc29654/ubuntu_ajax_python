@@ -39,6 +39,7 @@ def  data_print(url):
 
 
 zip_code=form.getvalue("sent2")
+kensaku=form.getvalue("sent3")
 
 find_data=data_print("http://search.yahoo.co.jp/search")
 
@@ -67,7 +68,15 @@ with closing(sqlite3.connect(dbname)) as conn:
     select_sql = 'select * from users where id ='+ str(zip_code)
     try:
         for row in c.execute(select_sql):
-            find_data.append(row)
+
+            if(kensaku == " "):
+                find_data.append(row)
+            else:
+                row_str=str(row[:7])
+                row_str=row_str.replace(kensaku,"<font color=\"red\">"  + kensaku + "</font>" )
+                row_str=row_str + "<br>"
+                find_data.append(row_str)
+
     except:
         pass
 
