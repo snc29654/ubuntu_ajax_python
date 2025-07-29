@@ -76,7 +76,8 @@ def  copy_link(url,filter):
     text = ""
     for result in results:
         result_text = result["text"]
-        if  filter == "all":
+        #if  filter == "all":
+        if  filter == None:
             text +=  "<a href= \"" + result["url"] +  "\"" +" target=\"_blank\"" + "</a>" +"<br>" +"\n"   
             text +=  result["text"] +"<br>"   
             text +=  "<div>"+result["url"] +"</div>"   
