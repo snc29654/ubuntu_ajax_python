@@ -36,10 +36,12 @@ def  data_print(url):
     data = BeautifulSoup(r.content, 'html.parser')
     return(data)
 
-
+f = open('tracefile.txt', 'w', encoding='UTF-8')
 
 zip_code=form.getvalue("sent2")
 kensaku=form.getvalue("sent3")
+
+#f.write(kensaku)
 
 find_data=data_print("http://search.yahoo.co.jp/search")
 
@@ -69,7 +71,7 @@ with closing(sqlite3.connect(dbname)) as conn:
     try:
         for row in c.execute(select_sql):
 
-            if(kensaku == " "):
+            if(kensaku == None):
                 find_data.append(row)
             else:
                 row_str=str(row[:7])
@@ -90,5 +92,6 @@ string8=string8+str(zip_code)
 string8=string8+")\"  type=\"button\"></input>"
 
 
+print(kensaku)
 print(string8)
 print(find_data)
