@@ -91,6 +91,11 @@ string8=string8+" <input value=\"サブタイトル変更\" style=\"background-c
 string8=string8+str(zip_code)
 string8=string8+")\"  type=\"button\"></input>"
 
+add_string2=" <input value=\"削除\" style=\"background-color:gray\" onclick=\"func_del_2("
+add_string2=add_string2+str(zip_code)
+add_string2=add_string2+")\"  type=\"button\"></input>"
+string8=string8+add_string2
+
 
 print(kensaku)
 print(string8)
