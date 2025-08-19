@@ -132,6 +132,8 @@
     <button type="button"  onclick="func_memo()" >メモの記録(DB) </button><br>
     メモ題名/AIチャットの質問/ニュースコメント/お気に入り名称<br>
     <input type="text" id="text5" size="66" value="" /><br>
+    サブタイトル変更<br>
+    <input type="text" id="text15" size="66" value="" /><br>
     メモ内容<br>
     <textarea id="text4" name="Contents" ROWS=10 COLS=80></textarea><br>
 
@@ -791,7 +793,7 @@
         if(str4==""){
             str4 = scrapeaction.value;
         }
-        let str5 = document.getElementById("text5").value;
+        let str5 = document.getElementById("text15").value;
         if(str5==""){
             alert("サブタイトル未入力");
             return;
