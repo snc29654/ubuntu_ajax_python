@@ -96,6 +96,9 @@ add_string2=add_string2+str(zip_code)
 add_string2=add_string2+")\"  type=\"button\"></input>"
 string8=string8+add_string2
 
+add_string3=" <input value=\"戻る\" style=\"background-color:gray\" onclick=\"func_search_kind("
+add_string3=add_string3+")\"  type=\"button\"></input>"
+string8=string8+add_string3
 
 print(kensaku)
 print(string8)
