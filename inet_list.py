@@ -73,6 +73,7 @@ def  get_link(url):
 def  copy_link(url,filter):
     results = get_link(url)
     f = open('tracefile.txt', 'w', encoding='UTF-8')
+    f2 = open('tracefile2.txt', 'w', encoding='UTF-8')
     text = ""
     for result in results:
         result_text = result["text"]
@@ -81,6 +82,17 @@ def  copy_link(url,filter):
             text +=  "<a href= \"" + result["url"] +  "\"" +" target=\"_blank\"" + "</a>" +"<br>" +"\n"   
             text +=  result["text"] +"<br>"   
             text +=  "<div>"+result["url"] +"</div>"   
+
+            text +=  "<a>"   
+
+            text+=" <input value=\"scrape\" style=\"background-color:gray\" onclick=\"func_news_list("
+            text+=repr(result["url"])
+            text+=")  \"  type=\"button\"></input>"
+
+            text +=  "</a>"   
+
+            f2.write(result["url"])
+            f2.write("\n")
 
             f.write(result["text"])
             f.write("<br>")
