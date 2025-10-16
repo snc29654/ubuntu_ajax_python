@@ -87,6 +87,8 @@ def  copy_link(url,filter):
 
             text+=" <input value=\"scrape\" style=\"background-color:gray\" onclick=\"func_news_list("
             text+=repr(result["url"])
+            text+=","
+            text+=repr(result["text"])
             text+=")  \"  type=\"button\"></input>"
 
             text +=  "</a>"   

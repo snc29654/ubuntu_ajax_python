@@ -686,12 +686,12 @@
 
     }
 
-   function  func_news_list(url){
+   function  func_news_list(url,comment){
         let str2 = url;
         if(str2==""){
             str2 = scrapeaction.value;
         }
-        let str3 = document.getElementById("text5").value;
+        let str3 = comment;
 
         if(str3==""){
                 alert("ニュースカテゴリが未選択です");
