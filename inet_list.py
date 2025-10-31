@@ -92,6 +92,18 @@ def  copy_link(url,filter):
             text+=")  \"  type=\"button\"></input>"
 
             text +=  "</a>"   
+            text +=  "<a>"
+
+            text+=" <input value=\"next\" style=\"background-color:gray\" onclick=\"func_list_next("
+            text+=repr(result["url"])
+            text+=","
+            text+=repr(result["text"])
+            text+=")  \"  type=\"button\"></input>"
+
+            text +=  "</a>"
+
+
+
 
             f2.write(result["url"])
             f2.write("\n")
