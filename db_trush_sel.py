@@ -39,6 +39,7 @@ def  data_print(url):
 
 
 zip_code=form.getvalue("sent2")
+trush_sel=form.getvalue("sent1")
 
 find_data=data_print("http://search.yahoo.co.jp/search")
 
@@ -56,43 +57,12 @@ with closing(sqlite3.connect(dbname)) as conn:
         c.execute(create_table)
     except:
         pass
-        
-    scraping_contents=find_data
-    Contents = str(scraping_contents)
-    users = [
-    (date, name, weather, kind, zip_code,Contents)
-    ]
-    find_data=[]
-    
-    select_sql = 'select * from users where Contents like '+'"%'+str(zip_code)+'%"'
-    try:
-        for row in c.execute(select_sql):
 
-            number=row[0]
-            add_string=" <input value=\"詳細\"  style=\"background-color:lightgreen\" onclick=\"func_one_2("
-            add_string=add_string+str(number)
-            add_string=add_string+")\"  type=\"button\"></input>"
-            find_data.append(add_string)
-
-
-            add_string2=" <input value=\"削除\" style=\"background-color:gray\" onclick=\"func_del_2("
-            add_string2=add_string2+str(number)
-            add_string2=add_string2+")\"  type=\"button\"></input>"
-            find_data.append(add_string2)
-
-            row_str=str(row[:7])
-            row_str=row_str.replace(zip_code,"<font size=\"20\" font color=\"red\">"  + zip_code + "</font>" )
-            row_str=row_str + "<br>"
-            find_data.append(row_str)
-    except:
-        pass
-
+    #select_sql = 'update users set name="ごみ箱" where id ='+ str(zip_code)
+    select_sql = 'delete  from users where name="'+str(trush_sel)+'"'
+    c.execute(select_sql)
     conn.commit()
 
 print("Content-type: text/html\n")
 
-
-
-
-
-print(find_data)
+print("空にしました")
