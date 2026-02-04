@@ -75,7 +75,7 @@ with closing(sqlite3.connect(dbname)) as conn:
                 find_data.append(row)
             else:
                 row_str=str(row[:7])
-                row_str=row_str.replace(kensaku,"<font color=\"red\">"  + kensaku + "</font>" )
+                row_str=row_str.replace(kensaku,"<font size=\"20\" font color=\"red\">"  + kensaku + "</font>" )
                 row_str=row_str + "<br>"
                 find_data.append(row_str)
 
