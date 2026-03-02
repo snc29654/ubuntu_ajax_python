@@ -31,11 +31,12 @@ sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
 zip_code=[]
 def  get_link(url):
-    f = open('links.txt', 'w', encoding='UTF-8')
+    f = open('debug.txt', 'w', encoding='UTF-8')
     res = requests.get(url)
     res.raise_for_status()
 
-    soup = bs4.BeautifulSoup(res.text, "lxml")
+    #soup = bs4.BeautifulSoup(res.text, "lxml")
+    soup = bs4.BeautifulSoup(res.content, "lxml")
     links = soup.select("a")
 
     type_links=type(links)
@@ -118,6 +119,26 @@ def  copy_link(url,filter):
             if  filter in result_text:
                 text +=  "<a href= \"" + result["url"] +  "\"" +" target=\"_blank\"" + "</a>" +"<br>" +"\n"   
                 text +=  result["text"] +"<br>"   
+                text +=  "<div>"+result["url"] +"</div>"   
+
+                text +=  "<a>"   
+
+                text+=" <input value=\"scrape\" style=\"background-color:gray\" onclick=\"func_news_list("
+                text+=repr(result["url"])
+                text+=","
+                text+=repr(result["text"])
+                text+=")  \"  type=\"button\"></input>"
+
+                text +=  "</a>"   
+                text +=  "<a>"
+
+                text+=" <input value=\"next\" style=\"background-color:gray\" onclick=\"func_list_next("
+                text+=repr(result["url"])
+                text+=","
+                text+=repr(result["text"])
+                text+=")  \"  type=\"button\"></input>"
+
+                text +=  "</a>"
                 f.write(result["text"])
                 f.write("<br>")
                 f.write(result["url"])
@@ -163,7 +184,7 @@ with closing(sqlite3.connect(dbname)) as conn:
 
 print("Content-type: text/html\n")
 
-f = open('tracefile.txt', 'r', encoding='UTF-8')
+f = open('debug.txt', 'r', encoding='UTF-8')
 read_data=f.read()
 
 
@@ -173,5 +194,8 @@ read_data=f.read()
 #print("<br>")
 #print("<br>")
 #print("<br>")
+
+
 print("<font color=\"green\">"  + "リンク表示" + "</font>")
 print(find_data)
+#print(read_data)
