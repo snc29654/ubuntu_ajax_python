@@ -11,6 +11,7 @@ from bs4 import BeautifulSoup
 import sqlite3
 from contextlib import closing
 import datetime
+import re
 
 cgitb.enable()
 form=cgi.FieldStorage()
@@ -66,11 +67,11 @@ with closing(sqlite3.connect(dbname)) as conn:
     
     if (split_len==3):
         Contents=Contents.replace(zip_code_split[0],"<font color=\"red\">"  + zip_code_split[0] + "</font>" )
-        Contents=Contents.replace(zip_code_split[1],"<font color=\"red\">"  + zip_code_split[1] + "</font>" )
-        Contents=Contents.replace(zip_code_split[2],"<font color=\"red\">"  + zip_code_split[2] + "</font>" )
+        Contents=Contents.replace(zip_code_split[1],"<font color=\"green\">"  + zip_code_split[1] + "</font>" )
+        Contents=Contents.replace(zip_code_split[2],"<font color=\"brown\">"  + zip_code_split[2] + "</font>" )
     if (split_len==2):
         Contents=Contents.replace(zip_code_split[0],"<font color=\"red\">"  + zip_code_split[0] + "</font>" )
-        Contents=Contents.replace(zip_code_split[1],"<font color=\"red\">"  + zip_code_split[1] + "</font>" )
+        Contents=Contents.replace(zip_code_split[1],"<font color=\"green\">"  + zip_code_split[1] + "</font>" )
     if (split_len==1):
         Contents=Contents.replace(zip_code_split[0],"<font color=\"red\">"  + zip_code_split[0] + "</font>" )
     
@@ -88,4 +89,8 @@ with closing(sqlite3.connect(dbname)) as conn:
 
 print("Content-type: text/html\n")
 #print(find_data)
+
+new_str = re.search(r'href(.+)ping',Contents).group(1)
+#print(new_str)
+
 print(Contents)
