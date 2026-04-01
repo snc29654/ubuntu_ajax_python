@@ -74,10 +74,15 @@ with closing(sqlite3.connect(dbname)) as conn:
 
     conn.commit()
 
-print("Content-type: text/html\n")
+    string8=""
+    add_string2=" <input value=\"削除\" style=\"background-color:gray\" onclick=\"func_del_2("
+    add_string2=add_string2+str(row[0])
+    add_string2=add_string2+")\"  type=\"button\"></input>"
+    string8=string8+add_string2
+    print("Content-type: text/html\n")
 
 
 
 
-
+print(string8)
 print(find_data)
