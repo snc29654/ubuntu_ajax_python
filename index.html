@@ -119,7 +119,6 @@
         <option value="https://news.yahoo.co.jp/categories/it">yahoo　IT</option>
         <option value="https://www.nikkansports.com/">日刊スポーツ</option>
         <option value="https://sports.yahoo.co.jp/list/news/mlb?genre=mlb">MLBニュース</option>
-        <option value="https://news.biglobe.ne.jp/ranking/topics//">biglobe トピックス</option>
         <option value="https://www.nikkei.com/business/net-media/">日経ビジネス</option>
     </select>
     <button type="button"  onclick="func_list()" >URLリスト</button>
@@ -247,7 +246,7 @@
         }
         $.ajax({
 
-            url:'./memo_write.py',
+            url:'./cgi-bin/memo_write.py',
             type:'POST',
             data:{sent2:str2,sent3:str3,sent4:str4}
         })
@@ -278,7 +277,7 @@
         }
         $.ajax({
 
-            url:'./ai_chat.py',
+            url:'./cgi-bin/ai_chat.py',
             type:'POST',
             data:{sent2:str2,sent3:str3,sent4:str4}
         })
@@ -305,7 +304,7 @@
         }
         $.ajax({
 
-            url:'./db_view_ran.py',
+            url:'./cgi-bin/db_view_ran.py',
             type:'POST',
             data:{sent2:str2,sent4:str4}
         })
@@ -331,7 +330,7 @@
         }
         $.ajax({
 
-            url:'./db_view_all.py',
+            url:'./cgi-bin/db_view_all.py',
             type:'POST',
             data:{sent2:str2,sent4:str4}
         })
@@ -356,7 +355,7 @@
             str4 = scrapeaction.value;
         }
         $.ajax({
-            url:'./db_search.py',
+            url:'./cgi-bin/db_search.py',
             type:'POST',
             data:{sent2:str2,sent4:str4}
         })
@@ -380,7 +379,7 @@
             str4 = scrapeaction.value;
         }
         $.ajax({
-            url:'./db_search_cat.py',
+            url:'./cgi-bin/db_search_cat.py',
             type:'POST',
             data:{sent2:str2,sent4:str4}
         })
@@ -405,7 +404,7 @@
             str4 = scrapeaction.value;
         }
         $.ajax({
-            url:'./db_search_detail.py',
+            url:'./cgi-bin/db_search_detail.py',
             type:'POST',
             data:{sent2:str2,sent4:str4}
         })
@@ -430,7 +429,7 @@
             str4 = scrapeaction.value;
         }
         $.ajax({
-            url:'./db_search_kind.py',
+            url:'./cgi-bin/db_search_kind.py',
             type:'POST',
             data:{sent2:str2,sent4:str4}
         })
@@ -455,7 +454,7 @@
             str4 = scrapeaction.value;
         }
         $.ajax({
-            url:'./ajax_test.py',
+            url:'./cgi-bin/ajax_test.py',
             type:'POST',
             data:{sent2:str2,sent4:str4}
         })
@@ -485,7 +484,7 @@
         }
            
         $.ajax({
-            url:'./db_search_kind_detail.py',
+            url:'./cgi-bin/db_search_kind_detail.py',
             
             type:'POST',
             data:{sent2:str2,sent4:str4}
@@ -514,7 +513,7 @@
         }
         $.ajax({
 
-            url:'./db_view_head.py',
+            url:'./cgi-bin/db_view_head.py',
             type:'POST',
             data:{sent2:str2,sent4:str4}
         })
@@ -542,7 +541,7 @@
         }
         $.ajax({
 
-            url:'./db_view_last.py',
+            url:'./cgi-bin/db_view_last.py',
             type:'POST',
             data:{sent2:str2,sent4:str4}
         })
@@ -570,7 +569,7 @@
         }
         $.ajax({
 
-            url:'./db_view_one.py',
+            url:'./cgi-bin/db_view_one.py',
             type:'POST',
             data:{sent2:str2,sent4:str4}
         })
@@ -604,7 +603,7 @@
         str2 = no;
         $.ajax({
 
-            url:'./db_view_one.py',
+            url:'./cgi-bin/db_view_one.py',
             type:'POST',
             data:{sent2:str2,sent3:str3,sent4:str4}
         })
@@ -631,7 +630,7 @@
         str2 = no;
         $.ajax({
 
-            url:'./db_view_one.py',
+            url:'./cgi-bin/db_view_one.py',
             type:'POST',
             data:{sent2:str2,sent4:str4}
         })
@@ -658,7 +657,7 @@
         }
         $.ajax({
 
-            url:'./inet_search.py',
+            url:'./cgi-bin/inet_search.py',
             type:'POST',
             data:{sent2:str2,sent4:str4}
         })
@@ -698,7 +697,7 @@
 
         $.ajax({
 
-            url:'./inet_news.py',
+            url:'./cgi-bin/inet_news.py',
             type:'POST',
             data:{sent2:str2,sent3:str3,sent4:str4,sent8:str8}
         })
@@ -738,7 +737,7 @@
 
         $.ajax({
 
-            url:'./inet_news.py',
+            url:'./cgi-bin/inet_news.py',
             type:'POST',
             data:{sent2:str2,sent3:str3,sent4:str4,sent8:str8}
         })
@@ -774,7 +773,7 @@
 
         $.ajax({
 
-            url:'./inet_favorite.py',
+            url:'./cgi-bin/inet_favorite.py',
             type:'POST',
             data:{sent2:str2,sent3:str3,sent4:str4,sent8:str8}
         })
@@ -813,7 +812,7 @@
 
         $.ajax({
 
-            url:'./inet_list.py',
+            url:'./cgi-bin/inet_list.py',
             type:'POST',
             data:{sent2:str2,sent3:str3,sent4:str4,sent5:str5}
         })
@@ -852,7 +851,7 @@
 
         $.ajax({
 
-            url:'./inet_list.py',
+            url:'./cgi-bin/inet_list.py',
             type:'POST',
             data:{sent2:str2,sent3:str3,sent4:str4,sent5:str5}
         })
@@ -882,7 +881,7 @@
 
         $.ajax({
 
-            url:'./db_chg.py',
+            url:'./cgi-bin/db_chg.py',
             type:'POST',
             data:{sent2:str2,sent4:str4}
         })
@@ -907,7 +906,7 @@
 
         $.ajax({
 
-            url:'./db_chg.py',
+            url:'./cgi-bin/db_chg.py',
             type:'POST',
             data:{sent2:str2,sent4:str4}
         })
@@ -937,7 +936,7 @@
 
         $.ajax({
 
-            url:'./chg_sub_title.py',
+            url:'./cgi-bin/chg_sub_title.py',
             type:'POST',
             data:{sent2:str2,sent4:str4,sent5:str5}
         })
@@ -967,7 +966,7 @@
 
         $.ajax({
 
-            url:'./db_del.py',
+            url:'./cgi-bin/db_del.py',
             type:'POST',
             data:{sent2:str2,sent4:str4}
         })
@@ -996,7 +995,7 @@
 
         $.ajax({
 
-            url:'./db_trush_sel.py',
+            url:'./cgi-bin/db_trush_sel.py',
             type:'POST',
             data:{sent1:str1,sent2:str2,sent4:str4}
         })
@@ -1024,7 +1023,7 @@
 
         $.ajax({
 
-            url:'./db_trush.py',
+            url:'./cgi-bin/db_trush.py',
             type:'POST',
             data:{sent2:str2,sent4:str4}
         })
@@ -1052,7 +1051,7 @@
         str2=no
         $.ajax({
 
-            url:'./db_trush_one.py',
+            url:'./cgi-bin/db_trush_one.py',
             type:'POST',
             data:{sent2:str2,sent4:str4}
         })
@@ -1081,7 +1080,7 @@
 	str2=no
         $.ajax({
 
-            url:'./db_del.py',
+            url:'./cgi-bin/db_del.py',
             type:'POST',
             data:{sent2:str2,sent4:str4}
         })
@@ -1110,7 +1109,7 @@
 	str2=no
         $.ajax({
 
-            url:'./db_del.py',
+            url:'./cgi-bin/db_del.py',
             type:'POST',
             data:{sent2:str2,sent4:str4}
         })
