@@ -37,7 +37,6 @@ def  data_print(url):
     return(data)
 
 
-f = open('tracefile.txt', 'w', encoding='UTF-8')
 
 zip_code=form.getvalue("sent2")
 
