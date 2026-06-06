@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/home/username/my_project/cgi-bin/.venv/bin/python3
 # -*- coding: utf-8 -*-
 
 import cgi
@@ -36,12 +36,10 @@ def  data_print(url):
     data = BeautifulSoup(r.content, 'html.parser')
     return(data)
 
-f = open('tracefile.txt', 'w', encoding='UTF-8')
 
 zip_code=form.getvalue("sent2")
 kensaku=form.getvalue("sent3")
 
-#f.write(kensaku)
 
 find_data=data_print("http://search.yahoo.co.jp/search")
 

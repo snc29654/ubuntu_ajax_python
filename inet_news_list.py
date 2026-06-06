@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/home/username/my_project/cgi-bin/.venv/bin/python3
 # -*- coding: utf-8 -*-
 
 import cgi
@@ -76,7 +76,7 @@ with closing(sqlite3.connect(dbname)) as conn:
     users = [
     (date, name, weather, kind, zip_code,Contents)
     ]
-    c.executemany(insert_sql, users)
+    #c.executemany(insert_sql, users)
     c.execute("SELECT MAX(id) FROM users")
     inserted_id = c.fetchone()[0]
 

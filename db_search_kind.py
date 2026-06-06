@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/home/username/my_project/cgi-bin/.venv/bin/python3
 # -*- coding: utf-8 -*-
 
 import cgi
@@ -37,7 +37,7 @@ def  data_print(url):
     return(data)
 
 
-f = open('tracefile.txt', 'w', encoding='UTF-8')
+#f = open('tracefile.txt', 'w', encoding='UTF-8')
 
 zip_code=form.getvalue("sent2")
 
@@ -116,7 +116,7 @@ with closing(sqlite3.connect(dbname)) as conn:
 
             find_data.append(add_string7)
 
-            f.write(add_string7)
+            #f.write(add_string7)
 
 
             add_string=" <input value=\"詳細\"  style=\"background-color:lightgreen\" onclick=\"func_one_2("
@@ -171,7 +171,7 @@ with closing(sqlite3.connect(dbname)) as conn:
 
 
 
-            f.write(add_string8)
+            #f.write(add_string8)
 
 
             find_data.append(row)

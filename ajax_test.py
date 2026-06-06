@@ -1,6 +1,6 @@
-#!/usr/bin/python3
+#!/home/username/my_project/cgi-bin/.venv/bin/python3
 # -*- coding: utf-8 -*-
-//
+
 import cgi
 import cgitb
 import json
@@ -48,7 +48,7 @@ date = datetime.date.today()
 name=""
 weather=""
 kind=""
-
+"""
 with closing(sqlite3.connect(dbname)) as conn:
     c = conn.cursor()
     create_table = '''create table users (id INTEGER PRIMARY KEY,date varchar(64), name varchar(64),
@@ -180,7 +180,7 @@ with closing(sqlite3.connect(dbname)) as conn:
         pass
 
     conn.commit()
-
+"""
 print("Content-type: text/html\n")
 print("<!DOCTYPE html>")
 print("<html>")

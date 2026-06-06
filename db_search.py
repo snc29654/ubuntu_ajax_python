@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/home/username/my_project/cgi-bin/.venv/bin/python3
 # -*- coding: utf-8 -*-
 
 import cgi
