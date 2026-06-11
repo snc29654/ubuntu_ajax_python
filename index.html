@@ -138,9 +138,10 @@
     <button type="button"  onclick="func_chg()" >クリップへの変更 </button><br>
 
     <button type="button"  onclick="func_ai()" >AIチャット </button>
-    <button type="button"  onclick="func_memo()" >メモの記録(DB) </button><br>
+    <button type="button"  onclick="func_memo()" >メモの記録(DB) </button>
+    <button id="pasteBtn5">クリップボードからニュースコメントへ貼り付け</button><br>
     メモ題名/AIチャットの質問/ニュースコメント/お気に入り名称<br>
-    <input type="text" id="text5" size="66" value="" /><br>
+    <input type="text" id="text5" size="66" placeholder="" /><br>
     サブタイトル変更<br>
     <input type="text" id="text15" size="66" value="" /><br>
     メモ内容<br>
@@ -159,21 +160,37 @@
 
 <script>
 
-document.getElementById('pasteBtn').addEventListener('click', async () => {
-  try {
-    // クリップボードからテキストを読み取る
-    const text = await navigator.clipboard.readText();
+    document.getElementById('pasteBtn').addEventListener('click', async () => {
+      try {
+        // クリップボードからテキストを読み取る
+        const text = await navigator.clipboard.readText();
     
-    // テキストボックスの値を書き換える
-    document.getElementById('text6').value = text;
+        // テキストボックスの値を書き換える
+        document.getElementById('text6').value = text;
     
-    alert('貼り付けに成功しました！');
-  } catch (err) {
-    // ユーザーが拒否した場合や、ブラウザが対応していない場合のエラーハンドリング
-    console.error('クリップボードの読み込みに失敗しました: ', err);
-    alert('貼り付けに失敗しました。アクセス権限を確認してください。');
-  }
-});
+        alert('貼り付けに成功しました！');
+      } catch (err) {
+        // ユーザーが拒否した場合や、ブラウザが対応していない場合のエラーハンドリング
+        console.error('クリップボードの読み込みに失敗しました: ', err);
+        alert('貼り付けに失敗しました。アクセス権限を確認してください。');
+      }
+    });
+
+    document.getElementById('pasteBtn5').addEventListener('click', async () => {
+      try {
+        // クリップボードからテキストを読み取る
+        const text = await navigator.clipboard.readText();
+    
+        // テキストボックスの値を書き換える
+        document.getElementById('text5').value = text;
+    
+        alert('貼り付けに成功しました！');
+      } catch (err) {
+        // ユーザーが拒否した場合や、ブラウザが対応していない場合のエラーハンドリング
+        console.error('クリップボードの読み込みに失敗しました: ', err);
+        alert('貼り付けに失敗しました。アクセス権限を確認してください。');
+      }
+    });
 
 
     function checkButton(){
