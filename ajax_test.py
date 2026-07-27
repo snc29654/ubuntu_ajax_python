@@ -181,6 +181,8 @@ with closing(sqlite3.connect(dbname)) as conn:
     conn.commit()
 """
 print("Content-type: text/html\n")
+
+"""
 print("<!DOCTYPE html>")
 print("<html>")
 print("<body>")
@@ -192,6 +194,11 @@ print("</script>")
 print("</body>")
 print("</html>")
 
+"""
+import glob
+for file in glob.glob('*.py'):
+    print (file)
+    print ("</br>")
 
 
 #print(find_data)
