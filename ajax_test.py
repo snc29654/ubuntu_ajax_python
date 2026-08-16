@@ -20,9 +20,9 @@ sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 zip_code=[]
 zip_code=form.getvalue("sent2")
 
-dbname = 'edict.sqlite3'
+dbname_dict = 'edict.sqlite3'
 def diary_world(match_word):
-    with closing(sqlite3.connect(dbname)) as conn:
+    with closing(sqlite3.connect(dbname_dict)) as conn:
         c = conn.cursor()
         create_table = '''create table items (item_id INTEGER PRIMARY KEY,word TEXT,mean TEXT,level INTEGER DEFAULT 0
 )'''
@@ -46,10 +46,41 @@ def diary_world(match_word):
             print("data not found")
     return str(data)
 
+yaku =diary_world(str(zip_code)) 
+
+date = datetime.date.today()
+
+name="英和"
+weather=""
+kind=""
+
+with closing(sqlite3.connect(dbname)) as conn:
+    c = conn.cursor()
+    create_table = '''create table users (id INTEGER PRIMARY KEY,date varchar(64), name varchar(64),
+                      weather varchar(64), kind varchar(32), zip_code varchar(64),Contents varchar(256))'''
+    try:
+        c.execute(create_table)
+    except:
+        pass
+        
+    scraping_contents=yaku
+    Contents = str(scraping_contents)
+    Contents = Contents.replace ("\n","")
+    Contents = Contents.replace ("\t","")
+    memo_title="<font color=\"red\">"  + zip_code + "</font>" + "<br>"
+    memo_title=memo_title.replace("\u3000"," ")
+    insert_sql = 'insert into users (date, name, weather, kind, zip_code,Contents) values (?,?,?,?,?,?)'
+    users = [
+    (date, name, memo_title, kind, weather,Contents)
+    ]
+    c.executemany(insert_sql, users)
+    conn.commit()
+
+
+
 
 print("Content-Type: text/html; charset=utf-8\n")
 
-
-print(diary_world(str(zip_code)))
+print(yaku)
 #print(find_data)
 
