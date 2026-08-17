@@ -1,5 +1,5 @@
 copy python  file  under  /home/username/my_project/cgi-bin  directory  
-copy index.html  under the  /var/www/html 
+copy index.html  under the  /var/www/html  
 sudo vi /etc/apache2/conf-available/serve-cgi-bin.conf  
 -----------------------------------------------------------  
 ScriptAlias /cgi-bin/ /home/username/my_project/cgi-bin/  
